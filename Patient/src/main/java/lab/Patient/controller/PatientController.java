@@ -1,5 +1,6 @@
 package lab.Patient.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -13,7 +14,8 @@ import lab.Patient.service.PatientService;
 
 @RestController
 public class PatientController {
-	PatientService service = new PatientService();
+	@Autowired
+	PatientService service;
 
 	@PostMapping("api/v1/patient")
 	public Patient addPatient(@RequestBody Patient p) {
@@ -22,7 +24,7 @@ public class PatientController {
 	}
 
 	@GetMapping("api/v1/patient")
-	public Patient[] getPatient() {
+	public Iterable<Patient> getPatient() {
 		return service.getPatient();
 	}
 

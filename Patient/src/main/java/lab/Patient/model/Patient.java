@@ -1,9 +1,23 @@
 package lab.Patient.model;
 
+import javax.persistence.Entity;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Patient {
-	String name;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 	String doctor, insurance;
+	String name;
+
+	public Patient() {
+
+	}
 
 	public Patient(String name, Integer id, String doctor, String insurance) {
 		this.name = name;
